@@ -48,7 +48,7 @@ void setColour(Colour c)
 
 void tabToMiddle()
 {
-	cout << "\t\t\t\t\t\t";
+	cout << "\t\t\t\t\t";
 }
 
 void dispMenu()
@@ -64,12 +64,11 @@ void dispMenu()
 
 void dispCredits()
 {
-	Sleep(2000);
 	setColour(DARKYELLOW);
 	tabToMiddle();
-	cout << "\n\n\n\n\n\n\n\n\n\n";
+	cout << "\n\n\n\n";
 	tabToMiddle();
-	cout << "*****************************************************\n";
+	cout << "*******************************************\n";
 	tabToMiddle();
 	cout << "Lead Developer: Shuaib Dorani\n";
 	tabToMiddle();
@@ -81,9 +80,9 @@ void dispCredits()
 	tabToMiddle();
 	cout << "TORRENS UNIVERISTY\n";
 	tabToMiddle();
-	cout << "*****************************************************\n";
+	cout << "*******************************************\n";
 	tabToMiddle();
-	cout << "\n\n\n\n\n\n\n\n\n\n";
+	cout << "\n\n\n\n";
 }
 
 void dispChips(int playerChips)
@@ -115,7 +114,7 @@ void slotMachine(int userInp)
 		cout << "PLEASE GAMBLE RESPONSIBLY\n";
 		Sleep(1000);
 		tabToMiddle();
-		cout << "Or actually you can go outside and do stuff.\n";
+		cout << "Or you can actually go outside and do stuff....\n\n";
 		Sleep(1750);
 		tabToMiddle();
 		cout << "WELCOME TO SHUAIB'S SLOT MACHINE!\n";
@@ -134,7 +133,7 @@ void slotMachine(int userInp)
 	default:
 		setColour(PINK);
 		tabToMiddle();
-		cout << "Pick Again\n";
+		cout << "Pick Again\n\n";
 	}
 }
 
@@ -153,4 +152,3 @@ bool doesPlayerHaveChips(int playerChips)
 {
 	return (playerChips > 0);
 }
-
