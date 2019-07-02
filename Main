@@ -17,12 +17,13 @@ void tabToMiddle(); //Used to tab line of text to middle of the console screen
 void dispMenu(); //Outputs the basic homescreen selection menu of the game
 void dispCredits(); //Displays the credits of the game
 void dispChips(int playerChips); //Displays players chip count
-void slotMachine(int userInp); //Function for the slot machine game
+void slotMachine(int userInp, int playerChips); //Function for the slot machine game in switch logic
 int getUserInp(); //Get the users input
 bool isBetValid(int playerChips, int bet); //Checks the validity of a players bet
 int placeBet(int playerChips, int bet); //Removes the bet amount from player's chips
 bool doesPlayerHaveChips(int playerChips); //Checks whether or not the player can continue playing
 int rewardPlayer();
+void playGame(int playersChips);
 
 int main()
 {
@@ -34,7 +35,7 @@ int main()
 		dispChips(playerChips);
 		dispMenu();
 		choice = getUserInp();
-		slotMachine(choice);
+		slotMachine(choice, playerChips);
 	}
 	return 0;
 }
@@ -103,21 +104,14 @@ int getUserInp()
 	return userInp;
 }
 
-void slotMachine(int userInp)
+void slotMachine(int userInp, int playerChips)
 {
 	switch (userInp)
 	{
 	case 1:
 	{
 		setColour(GREEN);
-		tabToMiddle();
-		cout << "PLEASE GAMBLE RESPONSIBLY\n";
-		Sleep(1000);
-		tabToMiddle();
-		cout << "Or you can actually go outside and do stuff....\n\n";
-		Sleep(1750);
-		tabToMiddle();
-		cout << "WELCOME TO SHUAIB'S SLOT MACHINE!\n";
+		playGame(playerChips);
 	}
 	break;
 	case 2:
@@ -137,6 +131,45 @@ void slotMachine(int userInp)
 	}
 }
 
+void playGame(int playersChips)
+{
+	/*srand(time(0));*/
+	int chips = playersChips;
+	int bet = -1;
+	int min = 2;
+	int max = 7;
+	int num1 = 0; 
+	int num2 = 0;
+	int num3 = 0;
+	tabToMiddle();
+	cout << "PLEASE GAMBLE RESPONSIBLY\n";
+	Sleep(1000);
+	tabToMiddle();
+	cout << "Or you can actually go outside and do stuff....\n\n";
+	Sleep(1750);
+	tabToMiddle();
+	cout << "WELCOME TO SHUAIB'S SLOT MACHINE!\n";
+	tabToMiddle();
+	cout << "Please place your bet amount: $";
+	cin >> bet;
+	cout << "\n";
+	while (isBetValid(playersChips, bet) == false)
+	{
+		tabToMiddle();
+		setColour(RED);
+		cout << "Invalid Amount!\n\n";
+		setColour(GREEN);
+		tabToMiddle();
+		cout << "Please place your bet amount: $";
+		cin >> bet;
+		cout << "\n";
+	}
+	placeBet(chips, bet);
+	tabToMiddle();
+	cout << "Your current chip  amount is: " << chips << endl;
+
+}
+
 bool isBetValid(int playerChips, int bet)
 {
 	return (bet > 0 && bet <= playerChips);
@@ -144,8 +177,9 @@ bool isBetValid(int playerChips, int bet)
 
 int placeBet(int playerChips, int bet)
 {
-	playerChips -= bet;
-	return playerChips;
+	int updateChips = 0;
+	updateChips = playerChips - bet;
+	return updateChips;
 }
 
 bool doesPlayerHaveChips(int playerChips)
