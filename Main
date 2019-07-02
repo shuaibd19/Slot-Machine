@@ -16,6 +16,8 @@ void setColour(Colour c); //Used to set colour of console text
 void tabToMiddle(); //Used to tab line of text to middle of the console screen
 void dispMenu(); //Outputs the basic homescreen selection menu of the game
 void dispCredits(); //Displays the credits of the game
+bool isBetValid(int playerChips, int bet); //Checks the validity of a players bet
+int placeBet(int playerChips, int bet); //Removes the bet amount from player's chips
 
 int main()
 {
@@ -70,4 +72,15 @@ void dispCredits()
 	cout << "*****************************************************\n";
 	tabToMiddle();
 	cout << "\n\n\n\n\n\n\n\n\n\n";
+}
+
+bool isBetValid(int playerChips, int bet)
+{
+	return (bet > 0 && bet <= playerChips);
+}
+
+int placeBet(int playerChips, int bet)
+{
+	playerChips -= bet;
+	return playerChips;
 }
