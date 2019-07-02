@@ -16,12 +16,26 @@ void setColour(Colour c); //Used to set colour of console text
 void tabToMiddle(); //Used to tab line of text to middle of the console screen
 void dispMenu(); //Outputs the basic homescreen selection menu of the game
 void dispCredits(); //Displays the credits of the game
+void dispChips(int playerChips); //Displays players chip count
+void slotMachine(int userInp); //Function for the slot machine game
+int getUserInp(); //Get the users input
+bool isBetValid(int playerChips, int bet); //Checks the validity of a players bet
+int placeBet(int playerChips, int bet); //Removes the bet amount from player's chips
+bool doesPlayerHaveChips(int playerChips); //Checks whether or not the player can continue playing
+int rewardPlayer();
 
 int main()
 {
 	const int PLAYER_INITIAL_CHIPS = 2000;
 	int playerChips = PLAYER_INITIAL_CHIPS;
-	dispMenu();
+	int choice = -1;
+	while (1)
+	{
+		dispChips(playerChips);
+		dispMenu();
+		choice = getUserInp();
+		slotMachine(choice);
+	}
 	return 0;
 }
 
@@ -34,7 +48,7 @@ void setColour(Colour c)
 
 void tabToMiddle()
 {
-	cout << "\t\t\t\t\t\t";
+	cout << "\t\t\t\t\t";
 }
 
 void dispMenu()
@@ -50,12 +64,11 @@ void dispMenu()
 
 void dispCredits()
 {
-	Sleep(2000);
 	setColour(DARKYELLOW);
 	tabToMiddle();
-	cout << "\n\n\n\n\n\n\n\n\n\n";
+	cout << "\n\n\n\n";
 	tabToMiddle();
-	cout << "*****************************************************\n";
+	cout << "*******************************************\n";
 	tabToMiddle();
 	cout << "Lead Developer: Shuaib Dorani\n";
 	tabToMiddle();
@@ -67,7 +80,75 @@ void dispCredits()
 	tabToMiddle();
 	cout << "TORRENS UNIVERISTY\n";
 	tabToMiddle();
-	cout << "*****************************************************\n";
+	cout << "*******************************************\n";
 	tabToMiddle();
-	cout << "\n\n\n\n\n\n\n\n\n\n";
+	cout << "\n\n\n\n";
+}
+
+void dispChips(int playerChips)
+{
+	setColour(GREEN);
+	tabToMiddle();
+	cout << "Player's chips: $" << playerChips << "\n";
+}
+
+int getUserInp()
+{
+	int userInp = -1;
+	setColour(GREEN);
+	tabToMiddle();
+	cout << "Please select from the above options: ";
+	cin >> userInp;
+	cout << "\n";
+	return userInp;
+}
+
+void slotMachine(int userInp)
+{
+	switch (userInp)
+	{
+	case 1:
+	{
+		setColour(GREEN);
+		tabToMiddle();
+		cout << "PLEASE GAMBLE RESPONSIBLY\n";
+		Sleep(1000);
+		tabToMiddle();
+		cout << "Or you can actually go outside and do stuff....\n\n";
+		Sleep(1750);
+		tabToMiddle();
+		cout << "WELCOME TO SHUAIB'S SLOT MACHINE!\n";
+	}
+	break;
+	case 2:
+	{
+		dispCredits();
+	}
+	break;
+	case 3:
+	{
+		exit(0);
+	}
+	break;
+	default:
+		setColour(PINK);
+		tabToMiddle();
+		cout << "Pick Again\n\n";
+	}
+}
+
+bool isBetValid(int playerChips, int bet)
+{
+	return (bet > 0 && bet <= playerChips);
+}
+
+int placeBet(int playerChips, int bet)
+{
+	playerChips -= bet;
+	return playerChips;
+}
+
+bool doesPlayerHaveChips(int playerChips)
+{
+	return (playerChips > 0);
 }
