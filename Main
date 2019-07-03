@@ -29,6 +29,7 @@ void playGame(int playersChips);
 
 int main()
 {
+	1;
 	const int PLAYER_INITIAL_CHIPS = 2000;
 	int playerChips = PLAYER_INITIAL_CHIPS;
 	int choice = -1;
