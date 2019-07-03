@@ -23,6 +23,7 @@ bool isBetValid(int playerChips, int bet); //Checks the validity of a players be
 int placeBet(int playerChips, int bet); //Removes the bet amount from player's chips
 bool doesPlayerHaveChips(int playerChips); //Checks whether or not the player can continue playing
 int rewardPlayer();
+void dollarBills();
 void playGame(int playersChips);
 
 int main()
@@ -96,7 +97,7 @@ void dispChips(int playerChips)
 int getUserInp()
 {
 	int userInp = -1;
-	setColour(GREEN);
+	setColour(TEAL);
 	tabToMiddle();
 	cout << "Please select from the above options: ";
 	cin >> userInp;
@@ -138,7 +139,7 @@ void playGame(int playersChips)
 	int bet = -1;
 	int min = 2;
 	int max = 7;
-	int num1 = 0; 
+	int num1 = 0;
 	int num2 = 0;
 	int num3 = 0;
 	tabToMiddle();
@@ -149,7 +150,9 @@ void playGame(int playersChips)
 	Sleep(1750);
 	tabToMiddle();
 	cout << "WELCOME TO SHUAIB'S SLOT MACHINE!\n";
+	dollarBills();
 	tabToMiddle();
+	setColour(GREEN);
 	cout << "Please place your bet amount: $";
 	cin >> bet;
 	cout << "\n";
@@ -164,9 +167,10 @@ void playGame(int playersChips)
 		cin >> bet;
 		cout << "\n";
 	}
-	placeBet(chips, bet);
+	int update = placeBet(chips, bet);
 	tabToMiddle();
-	cout << "Your current chip  amount is: " << chips << endl;
+	setColour(GREEN);
+	cout << "Your current chip amount is: $" << update << "\n\n";
 
 }
 
@@ -185,4 +189,23 @@ int placeBet(int playerChips, int bet)
 bool doesPlayerHaveChips(int playerChips)
 {
 	return (playerChips > 0);
+}
+
+void dollarBills()
+{
+	for (int i = 0; i < 5; ++i)
+	{
+		tabToMiddle();
+		for (int j = 0; j < 11; ++j)
+		{
+			setColour(GRAY);
+			cout << "[";
+			setColour(GREEN);
+			cout << "$";
+			setColour(GRAY);
+			cout << "]";
+		}
+		cout << "\n";
+	}
+	cout << "\n";
 }
