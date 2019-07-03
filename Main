@@ -2,6 +2,7 @@
 #include <string>
 #include <time.h>
 #include <Windows.h>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -67,8 +68,8 @@ void dispMenu()
 void dispCredits()
 {
 	setColour(DARKYELLOW);
-	tabToMiddle();
-	cout << "\n\n\n\n";
+	//tabToMiddle();
+	//cout << "\n\n\n\n";
 	tabToMiddle();
 	cout << "*******************************************\n";
 	tabToMiddle();
@@ -84,7 +85,7 @@ void dispCredits()
 	tabToMiddle();
 	cout << "*******************************************\n";
 	tabToMiddle();
-	cout << "\n\n\n\n";
+	cout << "\n\n";
 }
 
 void dispChips(int playerChips)
@@ -117,11 +118,13 @@ void slotMachine(int userInp, int playerChips)
 	break;
 	case 2:
 	{
+		system("CLS");
 		dispCredits();
 	}
 	break;
 	case 3:
 	{
+		system("CLS");
 		exit(0);
 	}
 	break;
@@ -142,6 +145,7 @@ void playGame(int playersChips)
 	int num1 = 0;
 	int num2 = 0;
 	int num3 = 0;
+	system("CLS");
 	tabToMiddle();
 	cout << "PLEASE GAMBLE RESPONSIBLY\n";
 	Sleep(1000);
