@@ -70,8 +70,6 @@ void dispCredits()
 	system("CLS");
 	setColour(DARKYELLOW);
 	tabToMiddle();
-	cout << "\n\n\n\n";
-	tabToMiddle();
 	cout << "*******************************************\n";
 	tabToMiddle();
 	cout << "Lead Developer: Shuaib Dorani\n";
@@ -106,6 +104,8 @@ int getUserInp()
 	cout << "\n";
 	return userInp;
 }
+
+/*Think about how to make this function return the amount the player has left over rather than being void*/
 
 void slotMachine(int userInp, int playerChips)
 {
