@@ -17,12 +17,20 @@ class Slot_Cosmetics
 public:
 	Slot_Cosmetics();
 	~Slot_Cosmetics();
-	void setColour(Colour c); //Used to set colour of console text
-	void tabToMiddle(); //Used to tab line of text to middle of the console screen
-	void dispMenu(); //Outputs the basic homescreen selection menu of the game
-	void dispCredits(); //Displays the credits of the game
-	void dispDollarBills(); //Displays a matrix of dollar bills
-	void dispWarning(); //Displays the beginning warning for the game
+	//Used to set colour of console text
+	void setColour(Colour c);
+	//Used to tab line of text to middle of the console screen
+	void tabToMiddle();
+	//Outputs the basic homescreen selection menu of the game
+	void dispMenu(); 
+	//Displays the credits of the game
+	void dispCredits(); 
+	//Displays a 5x11 matrix of dollar bills
+	void dispDollarBills();
+	//Displays the beginning warning for the game
+	void dispWarning();
+	//Displays red text indicating wrong choice
+	void dispInvalidChoice();
 };
 
 Slot_Cosmetics::Slot_Cosmetics()
@@ -75,7 +83,7 @@ void Slot_Cosmetics::dispCredits()
 	tabToMiddle();
 	cout << "*******************************************\n";
 	tabToMiddle();
-	cout << "\n\n\n\n";
+	cout << "\n\n";
 }
 
 void Slot_Cosmetics::dispDollarBills()
@@ -109,4 +117,11 @@ void Slot_Cosmetics::dispWarning()
 	Sleep(1750);
 	tabToMiddle();
 	cout << "WELCOME TO SHUAIB'S SLOT MACHINE!\n";
+}
+
+void Slot_Cosmetics::dispInvalidChoice()
+{
+	tabToMiddle();
+	setColour(RED);
+	cout << "Invalid choice! Please try again.\n\n";
 }
