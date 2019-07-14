@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Player.h"
 #include <time.h>
+#include <Windows.h>
 
 using namespace std;
 
@@ -125,7 +126,14 @@ int Slot_Machine::slotGame(int playerChips)
 	int slot3 = (rand() % 7) + 2;
 	slotCos.tabToMiddle();
 	slotCos.setColour(BLUE);
-	cout << "Your 3 Numbers are: " << slot1 << " " << slot2 << " " << slot3 << "\n\n";
+	//Adding suspense to the slot machine by adding pauses to the terminals output
+	cout << "Your 3 Numbers are: ";
+	Sleep(750);
+	cout << slot1 << " ";
+	Sleep(750);
+	cout << slot2 << " "; 
+	Sleep(750);
+	cout << slot3 << "\n\n";
 	playerChips = rewardCalculator(playerChips, bet, slot1, slot2, slot3);
 	return playerChips;
 }
@@ -137,6 +145,6 @@ int Slot_Machine::getUserInp()
 	slotCos.tabToMiddle();
 	cout << "Please select from the above options: ";
 	cin >> userInp;
-	cout << "\n\n";
+	cout << "\n";
 	return userInp;
 }
