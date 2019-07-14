@@ -93,6 +93,7 @@ void Slot_Cosmetics::dispDollarBills()
 		tabToMiddle();
 		for (int j = 0; j < 11; ++j)
 		{
+			Sleep(25);
 			setColour(GRAY);
 			cout << "[";
 			setColour(GREEN);
