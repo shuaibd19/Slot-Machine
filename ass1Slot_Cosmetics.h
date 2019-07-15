@@ -22,9 +22,9 @@ public:
 	//Used to tab line of text to middle of the console screen
 	void tabToMiddle();
 	//Outputs the basic homescreen selection menu of the game
-	void dispMenu(); 
+	void dispMenu();
 	//Displays the credits of the game
-	void dispCredits(); 
+	void dispCredits();
 	//Displays a 5x11 matrix of dollar bills
 	void dispDollarBills();
 	//Displays the beginning warning for the game
@@ -89,14 +89,14 @@ void Slot_Cosmetics::dispCredits()
 	Sleep(750);
 	tabToMiddle();
 	cout << "*******************************************\n";
-	Sleep(750);
+	Sleep(2000);
 	tabToMiddle();
 	cout << "\n\n";
 }
 
 void Slot_Cosmetics::dispDollarBills()
 {
-	for (int i = 0; i < 5; ++i)
+	for (int i = 0; i < 3; ++i)
 	{
 		tabToMiddle();
 		for (int j = 0; j < 11; ++j)
