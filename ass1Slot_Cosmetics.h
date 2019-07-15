@@ -69,19 +69,27 @@ void Slot_Cosmetics::dispCredits()
 	system("CLS");
 	setColour(DARKYELLOW);
 	tabToMiddle();
+	Sleep(750);
 	cout << "*******************************************\n";
 	tabToMiddle();
+	Sleep(750);
 	cout << "Lead Developer: Shuaib Dorani\n";
 	tabToMiddle();
+	Sleep(750);
 	cout << "Lead Designer: Shuaib Dorani\n";
+	Sleep(750);
 	tabToMiddle();
 	cout << "Tester: Shuaib Dorani\n";
+	Sleep(750);
 	tabToMiddle();
 	cout << "MEDIA DESIGN SCHOOL\n";
+	Sleep(750);
 	tabToMiddle();
 	cout << "TORRENS UNIVERISTY\n";
+	Sleep(750);
 	tabToMiddle();
 	cout << "*******************************************\n";
+	Sleep(750);
 	tabToMiddle();
 	cout << "\n\n";
 }
