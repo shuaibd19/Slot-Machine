@@ -14,7 +14,7 @@ public:
 	//Checks the validity of a players bet
 	bool isBetValid(int playerChips, int bet);
 	/*Removes the bet amount from player's chips and returns the remaining amount*/
-	int placeBet(int playerChips, int bet); 
+	int placeBet(int playerChips, int bet);
 	/*Checks the outcome of the slot machine and calculates the player rewards returning the players balance*/
 	int rewardCalculator(int playerChips, int bet, int slot1, int slot2, int slot3);
 	/*The function that is used for the actual slot machine game and generates 3 random slots and returns
@@ -55,6 +55,8 @@ int Slot_Machine::rewardCalculator(int playerChips, int bet, int slot1, int slot
 		playerChips += bet;
 		slotCos.tabToMiddle();
 		slotCos.setColour(GREEN);
+		cout << "OMG!!! YOU JUST GOT THREE 7's!\n";
+		slotCos.tabToMiddle();
 		cout << "Congratulations you've just won $" << bet << "!!!\n";
 		slotCos.tabToMiddle();
 		cout << "You now have $" << playerChips << "\n\n";
@@ -67,6 +69,8 @@ int Slot_Machine::rewardCalculator(int playerChips, int bet, int slot1, int slot
 		playerChips += bet;
 		slotCos.tabToMiddle();
 		slotCos.setColour(GREEN);
+		cout << "OMG!!! YOU JUST GOT THREE OF A KIND\n";
+		slotCos.tabToMiddle();
 		cout << "Congratulations you've just won $" << bet << "!!\n";
 		slotCos.tabToMiddle();
 		cout << "You now have $" << playerChips << "\n\n";
@@ -79,6 +83,8 @@ int Slot_Machine::rewardCalculator(int playerChips, int bet, int slot1, int slot
 		playerChips += bet;
 		slotCos.tabToMiddle();
 		slotCos.setColour(GREEN);
+		cout << "OMG!!! YOU JUST GOT TWO OF A KIND\n";
+		slotCos.tabToMiddle();
 		cout << "Congratulations you've just won $" << bet << "!\n";
 		slotCos.tabToMiddle();
 		cout << "You now have $" << playerChips << "\n\n";
@@ -89,9 +95,11 @@ int Slot_Machine::rewardCalculator(int playerChips, int bet, int slot1, int slot
 	{
 		slotCos.tabToMiddle();
 		slotCos.setColour(RED);
-		cout << "You've just lost $" << bet << "!\n"; 
+		cout << "Well that's unfortunate...\n";
 		slotCos.tabToMiddle();
-		cout << "You now have $" << playerChips<< "\n\n";
+		cout << "You've just lost $" << bet << "!\n";
+		slotCos.tabToMiddle();
+		cout << "You now have $" << playerChips << "\n\n";
 		return playerChips;
 	}
 }
@@ -101,12 +109,17 @@ int Slot_Machine::slotGame(int playerChips)
 	int bet = 0;
 	slotCos.tabToMiddle();
 	slotCos.setColour(GREEN);
+	cout << "Your chip balance: $" << playerChips <<"\n";
+	slotCos.tabToMiddle();
 	cout << "Please place your bet: $";
 	cin >> bet;
 	cout << "\n";
 	//This while loop informs the player whether or not their placed bet is valid
 	while (!isBetValid(playerChips, bet))
 	{
+		system("CLS");
+		slotCos.tabToMiddle();
+		cout << "Your chip balance: $" << playerChips << "\n\n";
 		slotCos.tabToMiddle();
 		slotCos.setColour(RED);
 		cout << "Invalid amount! Please try again.\n\n";
@@ -131,10 +144,11 @@ int Slot_Machine::slotGame(int playerChips)
 	Sleep(750);
 	cout << slot1 << " ";
 	Sleep(750);
-	cout << slot2 << " "; 
+	cout << slot2 << " ";
 	Sleep(750);
 	cout << slot3 << "\n\n";
 	playerChips = rewardCalculator(playerChips, bet, slot1, slot2, slot3);
+	Sleep(6000);
 	return playerChips;
 }
 
