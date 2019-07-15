@@ -2,6 +2,7 @@
 #include "Slot_Cosmetics.h"
 #include "Player.h"
 #include "Slot_Machine.h"
+
 using namespace std;
 
 int main()
@@ -35,8 +36,8 @@ int main()
 			break;
 		default:
 			slot_cosmetics.dispInvalidChoice();
+			Sleep(1000);
 		}
 	}
 	return 0;
 }
-
