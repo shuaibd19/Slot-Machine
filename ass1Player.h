@@ -13,14 +13,14 @@ public:
 	void setPlayerChips(int c = 2000);
 	int getPlayerChips();
 	//Checks whether or not the player can continue playing
-	bool doesPlayerHaveChips(); 
+	bool doesPlayerHaveChips();
 	//Displays players chip count
-	void dispChips(int playerChips); 
+	void dispChips(int playerChips);
 private:
 	//Creating an instance of the Slot_Cosmetics class in order to use some of its functions
 	Slot_Cosmetics slotCos;
 	//Integer to store player's chips
-	int chips; 
+	int chips;
 };
 
 Player::Player()
@@ -48,6 +48,7 @@ bool Player::doesPlayerHaveChips()
 
 void Player::dispChips(int playerChips)
 {
+	system("CLS");
 	slotCos.setColour(GREEN);
 	slotCos.tabToMiddle();
 	cout << "Player's chips: $" << playerChips << "\n";
